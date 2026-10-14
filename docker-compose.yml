@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    ports:
+      - "5016:8000"
+    environment:
+      STUDENT_ROLL: "52916"
+    networks:
+      - mynetwork
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - mydata:/data
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+
+volumes:
+  mydata:
